@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package auth.v1;
 
-option go_package = "github.com/d1rtyloudx/kafka-trainee-protos/gen/go/auth/v1;authv1";
+option go_package = "github.com/d1rtyloudx/rabbitmq-trainee-protos/gen/go/auth/v1;authv1";
 
 service AuthService {
   rpc Register (RegisterRequest) returns (RegisterResponse);
