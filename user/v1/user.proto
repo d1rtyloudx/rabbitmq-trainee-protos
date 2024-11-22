@@ -1,0 +1,88 @@
+syntax = "proto3";
+
+package user.v1;
+
+option go_package = "github.com/d1rtyloudx/rabbitmq-trainee-protos;userv1";
+
+import "google/protobuf/timestamp.proto";
+
+service UserService {
+  rpc Register (RegisterRequest) returns (RegisterResponse);
+  rpc Login (LoginRequest) returns (LoginResponse);
+  rpc Logout (LogoutRequest) returns (LogoutResponse);
+  rpc RefreshTokens (RefreshTokensRequest) returns (RefreshTokensResponse);
+  rpc VerifyAccessToken (VerifyAccessTokenRequest) returns (VerifyAccessTokenResponse);
+  rpc GetMe (GetMeRequest) returns (User);
+  rpc GetByUsername(GetByUsernameRequest) returns (User);
+  rpc Update(UpdateRequest) returns (UpdateResponse);
+  //rpc UploadAvatar (UploadAvatarRequest) returns (UploadAvatarResponse);
+}
+
+message User {
+  string id = 1;
+  string username = 2;
+  string email = 3;
+  string first_name = 4;
+  string last_name = 5;
+  string bio = 6;
+  string avatar_url = 7;
+  string role = 8;
+  bool is_confirmed = 9;
+  google.protobuf.Timestamp created_at = 10;
+  google.protobuf.Timestamp updated_at = 11;
+}
+
+message RegisterRequest {
+  string username = 1;
+  string email = 2;
+  string password = 3;
+}
+
+message RegisterResponse {
+  string user_id = 1;
+}
+
+message LoginRequest {
+  string username = 1;
+  string password = 2;
+}
+
+message LoginResponse {
+  string access_token = 1;
+  string refresh_token = 2;
+}
+
+message LogoutRequest { }
+
+message LogoutResponse { }
+
+message GetMeRequest { }
+
+message GetByUsernameRequest {
+  string username = 1;
+}
+
+message UpdateRequest {
+  string username = 1;
+  string first_name = 2;
+  string last_name = 3;
+  string bio = 4;
+}
+
+message UpdateResponse { }
+
+message RefreshTokensRequest {
+  string refresh_token = 1;
+}
+
+message RefreshTokensResponse {
+  string access_token = 1;
+  string refresh_token = 2;
+}
+
+message VerifyAccessTokenRequest { }
+
+message VerifyAccessTokenResponse { }
+
+
+
