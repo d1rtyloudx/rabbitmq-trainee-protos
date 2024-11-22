@@ -15,7 +15,7 @@ service UserService {
   rpc GetMe (GetMeRequest) returns (User);
   rpc GetByUsername(GetByUsernameRequest) returns (User);
   rpc Update(UpdateRequest) returns (UpdateResponse);
-  //rpc UploadAvatar (UploadAvatarRequest) returns (UploadAvatarResponse);
+  rpc UploadAvatar (UploadAvatarRequest) returns (UploadAvatarResponse);
 }
 
 message User {
@@ -83,6 +83,16 @@ message RefreshTokensResponse {
 message VerifyAccessTokenRequest { }
 
 message VerifyAccessTokenResponse { }
+
+message UploadAvatarRequest {
+  bytes avatar = 1;
+  string filename = 2;
+  string mime_type = 3;
+}
+
+message UploadAvatarResponse {
+  string url = 1;
+}
 
 
 
