@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package email;
+
+option go_package = "github.com/d1rtyloudx/rabbitmq-trainee-protos;emailv1";
+
+service EmailService {
+  rpc Send (SendRequest) returns (SendResponse);
+}
+
+message SendRequest {
+  repeated string to = 1;
+  string subject = 2;
+  string content_type = 3;
+  string body = 4;
+}
+
+message SendResponse { }
